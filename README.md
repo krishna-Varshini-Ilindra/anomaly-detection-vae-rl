@@ -76,18 +76,11 @@ monitoring scenarios.
 | Recall | 0.1377 | 0.1471 |
 | F1 Score | 0.1445 | 0.1055 |
 
-The most interesting finding was the precision-recall tradeoff. The 
-RL agent found slightly more real anomalies (recall improved by 6.8%) 
-but also flagged more normal points as anomalies. This makes sense 
-given how I set up the reward — I penalized missed anomalies heavily, 
-so the agent learned to be aggressive about flagging things.
+*Note: the VAE-only numbers come from an earlier run of the notebook; the saved run's VAE baseline differs (precision 0.1048, recall 0.0942, F1 0.0992). In both cases the RL agent increased recall and reduced precision.*
 
-The bigger challenge I noticed is that normal and anomaly 
-reconstruction errors overlap significantly. Both peak around the 
-same MSE range, which makes any threshold-based approach 
-fundamentally limited. This is exactly the problem Prof. Rekabdar's 
-DRTA paper addresses with active learning — and something I want to 
-explore further.
+The most interesting finding was the precision-recall tradeoff. The RL agent found more real anomalies but also flagged more normal points as anomalies. This makes sense given how I set up the reward — I penalized missed anomalies heavily, so the agent learned to be aggressive about flagging things.
+
+The bigger challenge I noticed is that normal and anomaly reconstruction errors overlap significantly. Both peak around the same MSE range, which makes any threshold-based approach fundamentally limited. This is exactly the problem Prof. Rekabdar's DRTA paper addresses with active learning — and something I want to explore further.
 
 ---
 
